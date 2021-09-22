@@ -5,13 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hamiltontevin_ecommerce.MainActivity
 import com.example.hamiltontevin_ecommerce.ProductAdapter
 import com.example.hamiltontevin_ecommerce.ProductItem
 import com.example.hamiltontevin_ecommerce.R
+import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
+import kotlinx.android.synthetic.main.product_fragment.view.*
 
 class ProductFragment : Fragment() {
+    private val model: FragmentsViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -21,15 +26,25 @@ class ProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+          var adapter: ProductAdapter
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.rv_productDisplayList)
-
-        val productAdapter = ProductAdapter(createProduct())
+        //Create an instance of the recycleView a
+        val recyclerView: RecyclerView = view.rv_productDisplayList
+        val productAdapter = ProductAdapter(createProduct()) { selectedItem: ProductItem ->
+            itemOnClicked(
+                selectedItem
+            )
+        }
         recyclerView.layoutManager = LinearLayoutManager(context)
+        productAdapter.notifyDataSetChanged()
 
-        //setting adapter to recyclerView
         recyclerView.adapter = productAdapter
 
+    }
+
+    private fun itemOnClicked(item: ProductItem){
+        model.setProduct(item)
+        (activity as MainActivity).replaceFragment(ProductDetailFragment())
     }
 
     private fun createProduct():ArrayList<ProductItem> {

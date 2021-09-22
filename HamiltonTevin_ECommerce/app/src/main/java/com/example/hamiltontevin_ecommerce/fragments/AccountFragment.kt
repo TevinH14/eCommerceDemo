@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.hamiltontevin_ecommerce.R
 
-class AccountFragment :Fragment() {
+public class AccountFragment :Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,7 +15,4 @@ class AccountFragment :Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.account_fragment,container,false)
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
 }

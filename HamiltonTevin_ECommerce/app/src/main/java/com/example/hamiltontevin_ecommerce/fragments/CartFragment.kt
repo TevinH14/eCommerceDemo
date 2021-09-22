@@ -12,7 +12,7 @@ import com.example.hamiltontevin_ecommerce.ProductAdapter
 import com.example.hamiltontevin_ecommerce.ProductItem
 import com.example.hamiltontevin_ecommerce.R
 
-class CartFragment : Fragment() {
+public class CartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +24,7 @@ class CartFragment : Fragment() {
 
         val recyclerView: RecyclerView = view.findViewById(R.id.rv_cartList)
         val productList = createProduct()
-        val productAdapter = ProductAdapter(productList)
+        val productAdapter = ProductAdapter(productList,null)
         recyclerView.layoutManager = LinearLayoutManager(context)
         val tv_total: TextView = view.findViewById(R.id.tv_cartTotal)
 
