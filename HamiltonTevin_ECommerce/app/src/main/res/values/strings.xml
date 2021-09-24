@@ -15,4 +15,5 @@
     <string name="create_account">CREATE ACCOUNT</string>
     <string name="member_offer">For exclusive benfits and exciting offers for our trusted members only</string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="description">Description</string>
 </resources>

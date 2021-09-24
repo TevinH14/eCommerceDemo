@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hamiltontevin_ecommerce.models.ProductItem
+import com.example.hamiltontevin_ecommerce.models.Products
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_item.view.*
 
-class ProductAdapter(var productList: List<ProductItem>?, private var clickListener: ((ProductItem) -> Unit)?):
+class ProductAdapter(private var productList: Products, private var clickListener: ((ProductItem) -> Unit)?):
     RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,13 +34,13 @@ class ProductAdapter(var productList: List<ProductItem>?, private var clickListe
         return 0
     }
 
-    class ViewHolder(val view:View): RecyclerView.ViewHolder(view){
+    class ViewHolder(private val view:View): RecyclerView.ViewHolder(view){
 
         fun bind(product: ProductItem,clickListener:(ProductItem)->Unit){
             view.tv_itemName.text = product.title
             view.tv_itemPrice.text = product.price.toString()
-            Picasso.get().load(product.imageUrl).into(view.iv_itemImage)
-            view.tv_itemRating.text = product.rate.toString()
+            Picasso.get().load(product.image).into(view.iv_itemImage)
+            view.tv_itemRating.text = product.rating.rate.toString()
             view.setOnClickListener {
                 clickListener(product)
             }

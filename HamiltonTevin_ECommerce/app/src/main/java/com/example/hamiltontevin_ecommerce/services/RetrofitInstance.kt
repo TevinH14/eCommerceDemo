@@ -16,21 +16,19 @@ class RetrofitInstance {
 
         private val client = OkHttpClient.Builder().apply {
             this.addInterceptor(httpLogging)
-                .connectTimeout(30,TimeUnit.SECONDS)
-                .readTimeout(30,TimeUnit.SECONDS)
-                .writeTimeout(30,TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
         }.build()
 
-        // Create Retrofit
-        private val retrofit = Retrofit.Builder()
-            .baseUrl("https://fakestoreapi.com/")
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
 
-    fun getRetrofitInstance(): Retrofit{
-        return retrofit
+        fun getRetrofitInstance(): Retrofit {
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
     }
 }

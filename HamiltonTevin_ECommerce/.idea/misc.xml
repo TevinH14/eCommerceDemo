@@ -11,11 +11,11 @@
         <entry key="app/src/main/res/drawable/shopping_cart.xml" value="0.12083333333333333" />
         <entry key="app/src/main/res/layout/account_fragment.xml" value="0.3818292400905145" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/cart_fragment.xml" value="0.3204275082680062" />
         <entry key="app/src/main/res/layout/cart_item.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.15715579710144928" />
         <entry key="app/src/main/res/layout/nav_graph.xml" value="0.2015625" />
-        <entry key="app/src/main/res/layout/product_detail_fragment.xml" value="0.2477355072463768" />
+        <entry key="app/src/main/res/layout/product_detail_fragment.xml" value="0.30672748004561" />
         <entry key="app/src/main/res/layout/product_fragment.xml" value="0.17617753623188406" />
         <entry key="app/src/main/res/layout/product_item.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />

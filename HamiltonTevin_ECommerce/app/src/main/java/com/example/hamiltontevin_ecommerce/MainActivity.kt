@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.hamiltontevin_ecommerce.databinding.ActivityMainBinding
 import com.example.hamiltontevin_ecommerce.db.CartDatabase
 import com.example.hamiltontevin_ecommerce.db.CartRepository
@@ -23,18 +27,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-       // setUpDatabase()
-//
-//        val navHostFragment =
-//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        val navController = navHostFragment.navController
+
+        setUpDatabase()
 
         title = "Home"
         if (savedInstanceState == null) {
-           // binding.bottomNavigation.menu.getItem(1).isChecked = true
+//            binding.bottomNavigation.menu.getItem(1).isChecked = true
 
             replaceFragment(ProductFragment())
         }
+        setUpNav()
         binding.bottomNavigation.setOnItemSelectedListener { menu ->
             when (menu.itemId) {
                 R.id.nav_person -> {
@@ -56,11 +58,18 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
-
             }
         }
-        setUpDatabase()
+    }
 
+    private fun setUpNav(){
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        val appBarConf = AppBarConfiguration(setOf(
+            R.id.nav_home, R.id.nav_cart,R.id.nav_person,R.id.productDetail
+        ))
+        setupActionBarWithNavController(navController, appBarConf)
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 
     private fun setUpDatabase(){
@@ -74,8 +83,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.menu.getItem(1).isChecked = true
     }
-
-
 
     fun replaceFragment(_fragment: Fragment) {
         val fragmentManger = supportFragmentManager.beginTransaction()
