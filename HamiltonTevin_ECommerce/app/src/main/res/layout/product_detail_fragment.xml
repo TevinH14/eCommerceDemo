@@ -152,7 +152,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_addToCart"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_below="@+id/cv_description_pd"

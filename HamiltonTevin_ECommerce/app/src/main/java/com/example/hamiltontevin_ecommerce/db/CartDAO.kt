@@ -6,8 +6,6 @@ import androidx.room.*
 @Dao
 interface CartDAO {
 
-
-
     @Insert
     suspend fun insertItem(cart: Cart): Long
 
@@ -17,12 +15,13 @@ interface CartDAO {
     @Delete
     suspend fun delete(cart: Cart):Int
 
-    @Query("SELECT * FROM cart_data_table")
-    fun getAll(): List<Cart>
+
 
     @Query("DELETE FROM cart_data_table")
     suspend fun deleteAll():Int
 
     @Query("SELECT * FROM cart_data_table")
     fun getAllItems(): LiveData<List<Cart>>
+
+
 }

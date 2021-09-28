@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hamiltontevin_ecommerce.MainActivity
-import com.example.hamiltontevin_ecommerce.ProductAdapter
 import com.example.hamiltontevin_ecommerce.R
+import com.example.hamiltontevin_ecommerce.adapter.ProductAdapter
 import com.example.hamiltontevin_ecommerce.models.ProductItem
 import com.example.hamiltontevin_ecommerce.models.Products
 import com.example.hamiltontevin_ecommerce.services.ProductService
@@ -43,7 +42,6 @@ class ProductFragment : Fragment() {
 
     private fun setView(view: View,products: Products){
         val recyclerView: RecyclerView = view.rv_productDisplayList
-        val list: MutableLiveData<Products> = model.getList()
         val productAdapter = ProductAdapter(products) { selectedItem: ProductItem ->
             itemOnClicked(selectedItem)
         }
@@ -65,12 +63,14 @@ class ProductFragment : Fragment() {
         responseLiveData.observe(viewLifecycleOwner, Observer {
             val productsList:MutableListIterator<ProductItem>? = it.body()?.listIterator()
             if(productsList!=null){
+                var count = 0
                 while(productsList.hasNext()){
+                    count++
+                    Log.i("count", "current count$count")
                     list.add(productsList.next())
-                    val productItem:ProductItem = productsList.next()
-                    Log.i("mytag",productItem.title)
+                    Log.i("current count",list.count().toString())
+
                 }
-                model.setList(list as Products)
                 setView(view,list)
             }
         })
@@ -79,27 +79,7 @@ class ProductFragment : Fragment() {
 
     private fun itemOnClicked(item: ProductItem){
         model.setItem(item)
-        (activity as MainActivity).replaceFragment(ProductDetailFragment())
+       (activity as MainActivity).replaceFragment(ProductDetailFragment())
     }
-
-//    private fun createProduct():ArrayList<ProductItem> {
-//        val list = arrayListOf<ProductItem>()
-//        for (i in 1..8){
-//            list.add(ProductItem("Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-//                109.95,"new","tech",
-//                "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",3.9f,123))
-//
-//            list.add(ProductItem("Mens Casual Premium Slim Fit T-Shirts ",22.3,"new","tech",
-//                "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",1.5f,123))
-//
-//            list.add(ProductItem("Mens Cotton Jacket",55.99,"new","tech",
-//                "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",1.5f,123))
-//
-//            list.add(ProductItem("Mens Casual Slim Fit",15.99,"new","tech",
-//                "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",1.5f,123))
-//
-//        }
-//        return list
-//    }
 
 }

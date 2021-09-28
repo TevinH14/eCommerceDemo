@@ -1,9 +1,10 @@
-package com.example.hamiltontevin_ecommerce
+package com.example.hamiltontevin_ecommerce.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hamiltontevin_ecommerce.R
 import com.example.hamiltontevin_ecommerce.models.ProductItem
 import com.example.hamiltontevin_ecommerce.models.Products
 import com.squareup.picasso.Picasso
@@ -20,18 +21,13 @@ class ProductAdapter(private var productList: Products, private var clickListene
     }
 
     override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
-        if(productList != null) {
-            val product = productList!![pos]
-            clickListener?.let { holder.bind(product, it) }
-        }
+        val product = productList[pos]
+        clickListener?.let { holder.bind(product, it) }
 
     }
 
     override fun getItemCount(): Int {
-        if(productList != null) {
-            return productList!!.size
-        }
-        return 0
+        return productList!!.size
     }
 
     class ViewHolder(private val view:View): RecyclerView.ViewHolder(view){

@@ -17,23 +17,23 @@ import com.example.hamiltontevin_ecommerce.fragments.AccountFragment
 import com.example.hamiltontevin_ecommerce.fragments.CartFragment
 import com.example.hamiltontevin_ecommerce.fragments.ProductDetailFragment
 import com.example.hamiltontevin_ecommerce.fragments.ProductFragment
-import com.example.hamiltontevin_ecommerce.viewModel.CartViewModelFactory
+import com.example.hamiltontevin_ecommerce.userDB.UserDatabase
+import com.example.hamiltontevin_ecommerce.userDB.UserRepository
+import com.example.hamiltontevin_ecommerce.viewModel.FragmentViewModelFactory
 import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var fragmentViewModel: FragmentsViewModel
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setUpDatabase()
-
         title = "Home"
         if (savedInstanceState == null) {
-//            binding.bottomNavigation.menu.getItem(1).isChecked = true
-
             replaceFragment(ProductFragment())
         }
         setUpNav()
@@ -47,19 +47,20 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_home -> {
                     Log.i("fap", "nav home")
-                    replaceFragment(ProductFragment())
+                     replaceFragment(ProductFragment())
                     title = "Home"
                     true
                 }
                 R.id.nav_cart -> {
                     Log.i("fap", "nav car")
-                    replaceFragment(CartFragment())
+                     replaceFragment(CartFragment())
                     title = "Cart"
                     true
                 }
                 else -> false
             }
         }
+
     }
 
     private fun setUpNav(){
@@ -75,13 +76,13 @@ class MainActivity : AppCompatActivity() {
     private fun setUpDatabase(){
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         val dao = CartDatabase.getInstance(application).cartDAO
-        val repository = CartRepository(dao)
-        val factory = CartViewModelFactory(repository)
+        val cartRepository = CartRepository(dao)
+        val userDAO = UserDatabase.getInstance(application).userDAO
+        val userRepository = UserRepository(userDAO)
+        val factory = FragmentViewModelFactory(cartRepository,userRepository)
         fragmentViewModel = ViewModelProvider(this,factory).get(FragmentsViewModel::class.java)
         binding.myViewModel = fragmentViewModel
         binding.lifecycleOwner = this
-
-        binding.bottomNavigation.menu.getItem(1).isChecked = true
     }
 
     fun replaceFragment(_fragment: Fragment) {

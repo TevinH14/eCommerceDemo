@@ -4,19 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hamiltontevin_ecommerce.CartAdapter
 import com.example.hamiltontevin_ecommerce.MainActivity
 import com.example.hamiltontevin_ecommerce.R
-import com.example.hamiltontevin_ecommerce.models.ProductItem
+import com.example.hamiltontevin_ecommerce.db.Cart
 import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
 import kotlinx.android.synthetic.main.cart_fragment.view.*
 
 class CartFragment : Fragment() {
     private val model: FragmentsViewModel by activityViewModels()
+    private lateinit var adapter:CartAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,33 +29,45 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        createAdapter(view)
+        setAdapter(view)
     }
 
-    private fun createAdapter(view: View){
+    private fun setAdapter(view: View){
+        //add a item touch helper
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            0, ItemTouchHelper.LEFT) {
+                //return false not needed due to not moving rows up and down
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
+
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    adapter.removeAt(viewHolder.adapterPosition)
+                }
+            }
+
         val recyclerView: RecyclerView = view.rv_cartList
-       // val productList = createProduct()
-//        val productAdapter = ProductAdapter(createProduct()) { selectedItem: ProductItem ->
-//            itemOnClicked(selectedItem)
-//        }
+        adapter =  CartAdapter(model) {item: Cart -> itemOnClicked(item) }
         recyclerView.layoutManager = LinearLayoutManager(context)
-
-        val tvTotal: TextView = view.findViewById(R.id.tv_cartTotal)
-
-        var totalNum: Double = 0.0
-//        for (item in productList ){
-//            totalNum +=item.price
-//        }
-
-        tvTotal.text = "\$" + totalNum.toString()
-
-        //setting adapter to recyclerView
-      //  recyclerView.adapter = productAdapter
+        recyclerView.adapter = adapter
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+        displayCartItems()
     }
 
-    private fun itemOnClicked(item: ProductItem){
-        model.setItem(item)
-        (activity as MainActivity).replaceFragment(ProductDetailFragment())
+    private fun displayCartItems(){
+        model.cartItems.observe(viewLifecycleOwner, Observer {
+            adapter.setList(it)
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    private fun itemOnClicked(item: Cart){
+        model.setItem(model.cartToProduct(item))
+       (activity as MainActivity).replaceFragment(ProductDetailFragment())
     }
 }

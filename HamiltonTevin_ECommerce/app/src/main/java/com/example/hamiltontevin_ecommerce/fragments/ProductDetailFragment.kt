@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.hamiltontevin_ecommerce.R
@@ -12,7 +13,7 @@ import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_detail_fragment.view.*
 
-class ProductDetailFragment: Fragment() {
+class ProductDetailFragment: Fragment(), View.OnClickListener {
     private  var productItem: ProductItem? = null
     private val model: FragmentsViewModel by activityViewModels()
 
@@ -26,7 +27,11 @@ class ProductDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setView(view)
 
+        val btn_addToCart:Button = view.findViewById(R.id.btn_addToCart)
+        btn_addToCart.setOnClickListener(this)
+
     }
+
     private fun setView(view: View){
         productItem = model.getItem().value
         if(productItem != null){
@@ -37,6 +42,13 @@ class ProductDetailFragment: Fragment() {
             view.tv_category_pd.text = productItem!!.category
 
             Picasso.get().load(productItem!!.image).into(view.iv_itemImage_pd)
+
+        }
+    }
+
+    override fun onClick(view: View?) {
+        if(view?.id == R.id.btn_addToCart){
+            model.insert(productItem!!)
 
         }
     }
