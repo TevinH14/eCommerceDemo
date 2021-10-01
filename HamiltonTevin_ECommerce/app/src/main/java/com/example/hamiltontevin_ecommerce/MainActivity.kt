@@ -13,14 +13,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.hamiltontevin_ecommerce.databinding.ActivityMainBinding
 import com.example.hamiltontevin_ecommerce.db.CartDatabase
 import com.example.hamiltontevin_ecommerce.db.CartRepository
-import com.example.hamiltontevin_ecommerce.fragments.AccountFragment
 import com.example.hamiltontevin_ecommerce.fragments.CartFragment
 import com.example.hamiltontevin_ecommerce.fragments.ProductDetailFragment
 import com.example.hamiltontevin_ecommerce.fragments.ProductFragment
+import com.example.hamiltontevin_ecommerce.fragments.ProfileFragment
 import com.example.hamiltontevin_ecommerce.userDB.UserDatabase
 import com.example.hamiltontevin_ecommerce.userDB.UserRepository
-import com.example.hamiltontevin_ecommerce.viewModel.FragmentViewModelFactory
 import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,9 +30,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
 
         setUpDatabase()
-        title = "Home"
+        setToolBarText("Product")
         if (savedInstanceState == null) {
             replaceFragment(ProductFragment())
         }
@@ -41,20 +42,20 @@ class MainActivity : AppCompatActivity() {
             when (menu.itemId) {
                 R.id.nav_person -> {
                     Log.i("fap", "nav person")
-                    replaceFragment(AccountFragment())
-                    title = "Account"
+                    replaceFragment(ProfileFragment())
+                    setToolBarText("Profile")
                     true
                 }
                 R.id.nav_home -> {
                     Log.i("fap", "nav home")
                      replaceFragment(ProductFragment())
-                    title = "Home"
+                    setToolBarText("Product")
                     true
                 }
                 R.id.nav_cart -> {
                     Log.i("fap", "nav car")
                      replaceFragment(CartFragment())
-                    title = "Cart"
+                    setToolBarText("Cart")
                     true
                 }
                 else -> false
@@ -79,10 +80,14 @@ class MainActivity : AppCompatActivity() {
         val cartRepository = CartRepository(dao)
         val userDAO = UserDatabase.getInstance(application).userDAO
         val userRepository = UserRepository(userDAO)
-        val factory = FragmentViewModelFactory(cartRepository,userRepository)
-        fragmentViewModel = ViewModelProvider(this,factory).get(FragmentsViewModel::class.java)
+       // val factory = FragmentViewModelFactory(cartRepository,userRepository)
+        fragmentViewModel = ViewModelProvider(this).get(FragmentsViewModel::class.java)
         binding.myViewModel = fragmentViewModel
         binding.lifecycleOwner = this
+    }
+
+    private fun setToolBarText(_title:String){
+        toolbar_title.text =_title
     }
 
     fun replaceFragment(_fragment: Fragment) {
@@ -93,5 +98,7 @@ class MainActivity : AppCompatActivity() {
         fragmentManger.replace(R.id.nav_host_fragment, _fragment)
         fragmentManger.commit()
     }
+
+
 
 }

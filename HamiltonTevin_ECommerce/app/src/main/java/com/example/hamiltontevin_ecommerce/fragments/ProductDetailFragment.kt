@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.hamiltontevin_ecommerce.R
@@ -27,8 +28,8 @@ class ProductDetailFragment: Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         setView(view)
 
-        val btn_addToCart:Button = view.findViewById(R.id.btn_addToCart)
-        btn_addToCart.setOnClickListener(this)
+        val btnAddToCart:Button = view.findViewById(R.id.btn_addToCart)
+        btnAddToCart.setOnClickListener(this)
 
     }
 
@@ -48,8 +49,8 @@ class ProductDetailFragment: Fragment(), View.OnClickListener {
 
     override fun onClick(view: View?) {
         if(view?.id == R.id.btn_addToCart){
-            model.insert(productItem!!)
-
+            Toast.makeText(context,"Item added to cart", Toast.LENGTH_SHORT).show()
+            model.insertItem(productItem!!)
         }
     }
 }

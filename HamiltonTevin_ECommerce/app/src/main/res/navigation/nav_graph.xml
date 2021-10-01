@@ -21,7 +21,7 @@
         android:id="@+id/nav_person"
         android:name="com.example.hamiltontevin_ecommerce.fragments.ProductFragment"
         android:label="accountFragment"
-        tools:layout="@layout/account_fragment"
+        tools:layout="@layout/profile_display_fragment"
         />
 
     <fragment

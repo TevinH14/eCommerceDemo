@@ -1,0 +1,175 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.hamiltontevin_ecommerce"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:4:5-67
+11-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:4:22-64
+12
+13    <!-- Permission will be merged into the manifest of the hosting app. -->
+14    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
+15    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+15-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:8:3-74
+15-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:8:20-72
+16
+17    <application
+17-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:5:5-22:19
+18        android:name="com.example.hamiltontevin_ecommerce.ECommerceApplication"
+18-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:7:9-45
+19        android:allowBackup="true"
+19-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:6:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.6.0] /Users/tevinhamilton/.gradle/caches/transforms-3/348f6d52d990d4fb4fcc5abc17a1cdcd/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:8:9-43
+23        android:label="@string/app_name"
+23-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:9:9-41
+24        android:roundIcon="@mipmap/ic_launcher_round"
+24-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:10:9-54
+25        android:supportsRtl="true"
+25-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:11:9-35
+26        android:testOnly="true"
+27        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+27-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:12:9-65
+28        <activity
+28-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:13:9-21:20
+29            android:name="com.example.hamiltontevin_ecommerce.MainActivity"
+29-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:14:13-41
+30            android:exported="true" >
+30-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:15:13-36
+31            <intent-filter>
+31-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:16:13-20:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:17:17-69
+32-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:17:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:19:17-77
+34-->/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/AndroidManifest.xml:19:27-74
+35            </intent-filter>
+36        </activity>
+37
+38        <provider
+38-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tevinhamilton/.gradle/caches/transforms-3/5491ead804eea65f79f220474a9915a2/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+39            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+39-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tevinhamilton/.gradle/caches/transforms-3/5491ead804eea65f79f220474a9915a2/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+40            android:authorities="com.example.hamiltontevin_ecommerce.lifecycle-process"
+40-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tevinhamilton/.gradle/caches/transforms-3/5491ead804eea65f79f220474a9915a2/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+41            android:exported="false"
+41-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tevinhamilton/.gradle/caches/transforms-3/5491ead804eea65f79f220474a9915a2/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+42            android:multiprocess="true" />
+42-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/tevinhamilton/.gradle/caches/transforms-3/5491ead804eea65f79f220474a9915a2/transformed/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+43
+44        <service
+44-->[androidx.room:room-runtime:2.3.0] /Users/tevinhamilton/.gradle/caches/transforms-3/ac7ff69e7d5867c30d306a6ef7c68b1b/transformed/room-runtime-2.3.0/AndroidManifest.xml:25:9-28:40
+45            android:name="androidx.room.MultiInstanceInvalidationService"
+45-->[androidx.room:room-runtime:2.3.0] /Users/tevinhamilton/.gradle/caches/transforms-3/ac7ff69e7d5867c30d306a6ef7c68b1b/transformed/room-runtime-2.3.0/AndroidManifest.xml:26:13-74
+46            android:directBootAware="true"
+46-->[androidx.room:room-runtime:2.3.0] /Users/tevinhamilton/.gradle/caches/transforms-3/ac7ff69e7d5867c30d306a6ef7c68b1b/transformed/room-runtime-2.3.0/AndroidManifest.xml:27:13-43
+47            android:exported="false" />
+47-->[androidx.room:room-runtime:2.3.0] /Users/tevinhamilton/.gradle/caches/transforms-3/ac7ff69e7d5867c30d306a6ef7c68b1b/transformed/room-runtime-2.3.0/AndroidManifest.xml:28:13-37
+48
+49        <provider
+49-->[com.squareup.picasso:picasso:2.71828] /Users/tevinhamilton/.gradle/caches/transforms-3/25b4c9f8414989f936ef178ca668a437/transformed/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+50            android:name="com.squareup.picasso.PicassoProvider"
+50-->[com.squareup.picasso:picasso:2.71828] /Users/tevinhamilton/.gradle/caches/transforms-3/25b4c9f8414989f936ef178ca668a437/transformed/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+51            android:authorities="com.example.hamiltontevin_ecommerce.com.squareup.picasso"
+51-->[com.squareup.picasso:picasso:2.71828] /Users/tevinhamilton/.gradle/caches/transforms-3/25b4c9f8414989f936ef178ca668a437/transformed/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+52            android:exported="false" />
+52-->[com.squareup.picasso:picasso:2.71828] /Users/tevinhamilton/.gradle/caches/transforms-3/25b4c9f8414989f936ef178ca668a437/transformed/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+53        <provider
+53-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:26:9-34:20
+54            android:name="androidx.startup.InitializationProvider"
+54-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:27:13-67
+55            android:authorities="com.example.hamiltontevin_ecommerce.androidx-startup"
+55-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:28:13-68
+56            android:exported="false" >
+56-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:29:13-37
+57            <meta-data
+57-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:31:13-33:52
+58                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+58-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:32:17-85
+59                android:value="androidx.startup" />
+59-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:33:17-49
+60        </provider>
+61
+62        <receiver
+62-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:36:9-45:20
+63            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+63-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:37:13-76
+64            android:directBootAware="false"
+64-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:38:13-44
+65            android:enabled="true"
+65-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:39:13-35
+66            android:exported="true"
+66-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:40:13-36
+67            android:permission="android.permission.DUMP" >
+67-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:41:13-57
+68            <intent-filter>
+68-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:42:13-44:29
+69                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+69-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:43:17-91
+69-->[androidx.profileinstaller:profileinstaller:1.0.1] /Users/tevinhamilton/.gradle/caches/transforms-3/f900fb108735ea9d63beade6a4b3f776/transformed/jetified-profileinstaller-1.0.1/AndroidManifest.xml:43:25-88
+70            </intent-filter>
+71        </receiver> <!-- The activities will be merged into the manifest of the hosting app. -->
+72        <activity
+72-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:5-271
+73            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+73-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:15-102
+74            android:enabled="false"
+74-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:103-126
+75            android:exported="false"
+75-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:127-151
+76            android:launchMode="singleInstance"
+76-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:204-239
+77            android:process=":playcore_missing_splits_activity"
+77-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:152-203
+78            android:stateNotNeeded="true" />
+78-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:12:240-269
+79        <activity
+79-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:5-226
+80            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+80-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:15-95
+81            android:enabled="false"
+81-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:96-119
+82            android:exported="false"
+82-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:120-144
+83            android:stateNotNeeded="true"
+83-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:145-174
+84            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+84-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:13:175-224
+85        <service
+85-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:16:5-18:15
+86            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+86-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:16:14-95
+87            android:enabled="false"
+87-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:16:96-119
+88            android:exported="true" >
+88-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:16:120-143
+89            <meta-data
+89-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:17:7-108
+90                android:name="com.google.android.play.core.assetpacks.versionCode"
+90-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:17:18-84
+91                android:value="10901" />
+91-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:17:85-106
+92        </service>
+93        <service
+93-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:19:5-147
+94            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+94-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:19:14-96
+95            android:enabled="false"
+95-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:19:97-120
+96            android:exported="false" />
+96-->[com.google.android.play:core:1.9.1] /Users/tevinhamilton/.gradle/caches/transforms-3/e1bb31cdf0d1cd27ae3813a5212f09d5/transformed/jetified-core-1.9.1/AndroidManifest.xml:19:121-145
+97    </application>
+98
+99</manifest>

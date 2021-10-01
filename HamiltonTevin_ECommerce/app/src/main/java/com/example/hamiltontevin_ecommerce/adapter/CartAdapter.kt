@@ -40,7 +40,7 @@ class CartAdapter(private val model: FragmentsViewModel,private val clickListene
 
     //remove item at swiped row
     fun removeAt(pos: Int) {
-        model.delete(cartList[pos])
+        model.deleteItem(cartList[pos])
         cartList.removeAt(pos)
         notifyItemRemoved(pos)
     }

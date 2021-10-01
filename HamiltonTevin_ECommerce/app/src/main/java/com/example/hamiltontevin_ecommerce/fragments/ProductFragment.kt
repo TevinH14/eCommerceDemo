@@ -49,6 +49,7 @@ class ProductFragment : Fragment() {
 
         recyclerView.adapter = productAdapter
     }
+
     private fun getProducts(view: View){
         val list = Products()
 

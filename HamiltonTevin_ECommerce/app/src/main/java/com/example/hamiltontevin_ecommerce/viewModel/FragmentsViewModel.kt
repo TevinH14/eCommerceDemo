@@ -1,21 +1,74 @@
 package com.example.hamiltontevin_ecommerce.viewModel
 
-import android.util.Log
-import androidx.databinding.Observable
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hamiltontevin_ecommerce.db.Cart
+import com.example.hamiltontevin_ecommerce.db.CartDatabase
 import com.example.hamiltontevin_ecommerce.db.CartRepository
 import com.example.hamiltontevin_ecommerce.models.ProductItem
 import com.example.hamiltontevin_ecommerce.models.Rating
+import com.example.hamiltontevin_ecommerce.userDB.User
+import com.example.hamiltontevin_ecommerce.userDB.UserDatabase
 import com.example.hamiltontevin_ecommerce.userDB.UserRepository
 import kotlinx.coroutines.launch
 
-class FragmentsViewModel(private val cartRepository: CartRepository, private val userRepository:UserRepository): ViewModel(), Observable {
+class FragmentsViewModel(application: Application): AndroidViewModel(application) {
+    //Repository instance
+    var cartRepository:CartRepository
+    var userRepository:UserRepository
 
-    //shared Data
+    //shared Data with product detail view
     private val productLiveData: MutableLiveData<ProductItem> = MutableLiveData()
+
+    //live data objects for profile fragment
+    val fullNameLiveData: MutableLiveData<String> = MutableLiveData()
+    val emailLiveData: MutableLiveData<String> = MutableLiveData()
+    val phoneNumLiveData: MutableLiveData<String> = MutableLiveData()
+    val btnTextLiveData: MutableLiveData<String> = MutableLiveData()
+    val editMode: MutableLiveData<Boolean> = MutableLiveData()
+    val isUser: MutableLiveData<Boolean> = MutableLiveData()
+
+
+    init {
+        editMode.value = false
+        isUser.value = false
+
+        val dao = CartDatabase.getInstance(application).cartDAO
+         cartRepository = CartRepository(dao)
+        val userDAO = UserDatabase.getInstance(application).userDAO
+         userRepository = UserRepository(userDAO)
+    }
+
+    val cartItems = cartRepository.cart
+    val userInfo = userRepository.user
+
+    val total = cartRepository.total()
+
+
+    fun onButtonClick(){
+        editMode.value = !editMode.value!!
+
+        if(isUser.value!!){
+            updateUser(User(1
+                ,fullNameLiveData.value!!
+                ,emailLiveData.value!!
+                ,phoneNumLiveData.value!!
+
+            ))
+        }
+        else{
+            if(!editMode.value!!){
+                insertUser(User(1
+                    ,fullNameLiveData.value!!
+                    ,emailLiveData.value!!
+                    ,phoneNumLiveData.value!!
+                ))
+            }
+        }
+
+    }
 
     //set selected product
     fun setItem(input: ProductItem) {
@@ -24,12 +77,6 @@ class FragmentsViewModel(private val cartRepository: CartRepository, private val
 
     //get selected product
     fun getItem(): MutableLiveData<ProductItem> = productLiveData
-    //get all cart rows from database
-
-
-    val cartItems = cartRepository.cart
-    val user = userRepository.user
-
 
 
     //turn cart item to productItem
@@ -44,42 +91,35 @@ class FragmentsViewModel(private val cartRepository: CartRepository, private val
             Rating(0,cart.rating))
     }
 
-    fun addToCart(){
-        //val cart: Cart = Cart()
-        //insert(cart)
-    }
-
     //insert product to cart database
-    fun insert(products: ProductItem) = viewModelScope.launch {
-
-         val cart = Cart(products.id,
-             products.title,
-             products.price,
-             products.description,
-             products.category,
-             products.image,
-         products.rating.rate)
-
-        val newRowId = cartRepository.insert(cart)
-        if (newRowId > -1) {
-           Log.i("fab" ,"cart Inserted Successfully $newRowId")
+    fun insertItem(products: ProductItem) = viewModelScope.launch {
+        val exists = cartRepository.exists(products.id)
+        if(!exists){
+            val cart = Cart(products.id,
+                products.title,
+                products.price,
+                products.description,
+                products.category,
+                products.image,
+                products.rating.rate,
+                1
+            )
+             cartRepository.insert(cart)
+        }else{
+          cartRepository.updateQuantity(products.id)
         }
-
     }
-
     //delete product from cart database
-    fun delete(cartItem: Cart) = viewModelScope.launch {
+    fun deleteItem(cartItem: Cart) = viewModelScope.launch {
         cartRepository.delete(cartItem)
 
     }
 
-    //currently not needed
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+    fun insertUser(user: User) = viewModelScope.launch {
+        userRepository.insert(user)
     }
 
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+    fun updateUser(user: User) = viewModelScope.launch {
+        userRepository.update(user)
     }
-
 }

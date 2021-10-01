@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/cart_fragment.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/cart_fragment.xml"
+    },
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/product_item.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/product_item.xml"
+    },
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/product_fragment.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/product_fragment.xml"
+    },
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/product_detail_fragment.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/product_detail_fragment.xml"
+    },
+    {
+        "merged": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/profile_display_fragment.xml",
+        "source": "/Users/tevinhamilton/Desktop/eCommerceDemo/HamiltonTevin_ECommerce/app/src/main/res/layout/profile_display_fragment.xml"
+    }
+]

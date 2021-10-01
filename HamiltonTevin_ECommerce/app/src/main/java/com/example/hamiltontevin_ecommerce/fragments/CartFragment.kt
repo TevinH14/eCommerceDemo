@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hamiltontevin_ecommerce.CartAdapter
 import com.example.hamiltontevin_ecommerce.MainActivity
 import com.example.hamiltontevin_ecommerce.R
+import com.example.hamiltontevin_ecommerce.databinding.CartFragmentBinding
 import com.example.hamiltontevin_ecommerce.db.Cart
 import com.example.hamiltontevin_ecommerce.viewModel.FragmentsViewModel
 import kotlinx.android.synthetic.main.cart_fragment.view.*
@@ -20,12 +22,17 @@ import kotlinx.android.synthetic.main.cart_fragment.view.*
 class CartFragment : Fragment() {
     private val model: FragmentsViewModel by activityViewModels()
     private lateinit var adapter:CartAdapter
+    private lateinit var binding: CartFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.cart_fragment,container,false)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View?{
+
+        binding = DataBindingUtil.inflate(inflater,R.layout.cart_fragment,container,false)
+        binding.viewModel = model
+        binding.lifecycleOwner = this
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
